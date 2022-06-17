@@ -12,6 +12,7 @@
 * Fix responsive design for no message page
 * Add input validation with express-validate
 * Validate origin on POST
+* URL QR-Code generation
 
 ## Run
 SECRET_KEY=RANDOM33CHARKEY node app.js

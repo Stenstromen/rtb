@@ -1,4 +1,5 @@
 const { encrypt, decrypt } = require("../enc/crypto.enc");
+const qrcodeGen = require("../qrcode/gen.qrcode");
 const model = require("../models/rtb.models");
 const uuid = require("uuid");
 let tempMessageId;
@@ -26,7 +27,10 @@ function sendMessageLanding(req, res) {
     "/" +
     tempMessageId;
   res.writeHead(200, { "Content-Type": "text/html" });
-  res.end(model.printLandHeader + burnURL + model.printLandFooter);
+  res.end(model.printLandHeader 
+    + burnURL 
+    + model.printLandFooter);
+  qrcodeGen(burnURL);
 }
 
 function getMessage(req, res) {
