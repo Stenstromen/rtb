@@ -31,8 +31,17 @@ a:hover {
   padding-top: 20px;
 }
 
+.messagebuttonarea {
+  display: flex;
+  justify-content: center;
+}
+
 textarea {
   resize: none;
+  background-color: #f8f8f8;
+  box-sizing: border-box;
+  border: 2px solid green;
+  border-radius: 4px;
 }
 
 textarea:active {
@@ -43,6 +52,11 @@ textarea:active {
   box-shadow: none;
 }
 
+button.submit {
+  color: white;
+  background-color: black;
+}
+
 button.submit:active {
   color: black;
   background-color: white;
@@ -50,31 +64,128 @@ button.submit:active {
 
 /* iPhone Portrait */
 @media screen and (min-width: 428px) {
+  .messagearea {
+    padding-top: 30px;
+  }
+
   textarea {
     width: 412px;
     height: 400px;
     padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid green;
-    border-radius: 4px;
-    background-color: #f8f8f8;
+    font-size: 16px;
+  }
+
+  .messagebuttonarea {
+    padding-top: 70%;
+  }
+
+  button.submit {
+    font-size: xx-large;
+    border-radius: 25px;
+    padding: 8px 10px;
+    border: 2px solid black;
+    width: 80%;
+  }
+}
+
+/* iPhone Landscape */
+@media screen and (min-width: 926px) {
+  .messagearea {
+    padding-top: 30px;
+  }
+
+  textarea {
+    width: 860px;
+    height: 400px;
+    padding: 12px 12px;
+    font-size: 16px;
+  }
+
+  .messagebuttonarea {
+    padding-top: 1%;
+  }
+
+  button.submit {
+    font-size: xx-large;
+    border-radius: 25px;
+    padding: 8px 10px;
+    border: 2px solid black;
+    width: 80%;
+  }
+}
+
+/* iPad Portrait */
+@media screen and (min-width: 810px) {
+  textarea {
+    width: 790px;
+    height: 400px;
+    padding: 12px 12px;
     font-size: 16px;
   }
 
   .messagebuttonarea {
     display: flex;
     justify-content: center;
-    padding-top: 70%;
+    padding-top: 50%;
   }
 
   button.submit {
     font-size: xx-large;
-    color: white;
-    background-color: black;
     border-radius: 25px;
     padding: 8px 10px;
     border: 2px solid black;
     width: 80%;
+  }
+}
+
+/* iPad Landscape */
+@media screen and (min-width: 1080px) {
+  textarea {
+    width: 1060px;
+    height: 400px;
+    padding: 12px 12px;
+    font-size: 16px;
+  }
+
+  .messagebuttonarea {
+    display: flex;
+    justify-content: center;
+    padding-top: 17%;
+  }
+
+  button.submit {
+    font-size: xx-large;
+    border-radius: 25px;
+    padding: 8px 10px;
+    border: 2px solid black;
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .messagearea {
+    padding-top: 100px;
+  }
+
+  textarea {
+    width: 1150px;
+    height: 400px;
+    padding: 12px 12px;
+    font-size: 16px;
+  }
+
+  .messagebuttonarea {
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+  }
+
+  button.submit {
+    font-size: xx-large;
+    border-radius: 25px;
+    padding: 8px 10px;
+    border: 2px solid black;
+    width: 1000px;
   }
 }
 </style>
