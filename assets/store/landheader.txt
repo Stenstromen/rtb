@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       function myFunction() {
-        const copyText = document.getElementById("message");
+        const copyText = document.getElementById("url");
 
         copyText.select();
         copyText.setSelectionRange(0, 99999);
@@ -14,11 +14,11 @@
         navigator.clipboard.writeText(copyText.value);
 
         document.getElementById("button").textContent =
-          "Copy Text To Clipboard ✅";
+          "Copy URL To Clipboard ✅";
 
         setTimeout(function () {
           document.getElementById("button").textContent =
-            "Copy Text To Clipboard 📋";
+            "Copy URL To Clipboard 📋";
         }, 2000);
       }
     </script>
@@ -27,33 +27,38 @@
         background-color: lightgray;
       }
       .messagearea {
-        display: flex;
-        justify-content: center;
         padding-top: 20px;
       }
-
       button:active {
         color: black;
         background-color: white;
       }
       @media screen and (min-width: 428px) {
-        textarea {
+        .messagearea {
           width: 412px;
           height: 400px;
-          padding: 12px 20px;
+          padding: 12px 12px;
           box-sizing: border-box;
           border: 2px solid green;
           border-radius: 4px;
-          background-color: #f8f8f8;
+          /*background-color: #f8f8f8;*/
           font-size: 16px;
         }
-
-        .messagebuttonarea {
-          display: flex;
-          justify-content: center;
-          padding-top: 80%;
+        textarea {
+          width: 388px;
+          height: 20px;
+          padding: 1px 3px;
+          box-sizing: border-box;
+          border: 2px solid black;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: x-small;
         }
-
+        .messagebuttonarea {
+    display: flex;
+    justify-content: center;
+    padding-top: 80%;
+  }
         button {
           font-size: large;
           color: white;
@@ -65,18 +70,10 @@
         }
       }
     </style>
-    <title>BurnMessage</title>
+    <title>Landing</title>
   </head>
   <body>
     <h1>Success</h1>
     <div class="messagearea">
-<textarea id="message" readonly>
-</textarea>
-    </div>
-    <div class="messagebuttonarea">
-      <button onclick="myFunction()" id="button">
-        Copy Text To Clipboard 📋
-      </button>
-    </div>
-  </body>
-</html>
+      <p>Burner message available on link:</p>
+      <textarea id="url" rows="1" cols="27" readonly>

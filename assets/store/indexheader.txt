@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+   body {
+  background-color: lightgray;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:visited {
+  text-decoration: none;
+  color: #000;
+}
+a:active {
+  color: white;
+  background-color: black;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.messagearea {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea:active {
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+button.submit:active {
+  color: black;
+  background-color: white;
+}
+
+/* iPhone Portrait */
+@media screen and (min-width: 428px) {
+  textarea {
+    width: 412px;
+    height: 400px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid green;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+  }
+
+  .messagebuttonarea {
+    display: flex;
+    justify-content: center;
+    padding-top: 70%;
+  }
+
+  button.submit {
+    font-size: xx-large;
+    color: white;
+    background-color: black;
+    border-radius: 25px;
+    padding: 8px 10px;
+    border: 2px solid black;
+    width: 80%;
+  }
+}
+</style>
+<title>RTB - ReadThenBurn CopyCat</title>
+  </head>
+  <body>
+    <h1>RTB</h1>
+    <h3><a href="https://readthenburn.fnkr.net/" target="_blank">ReadThenBurn CopyCat</a></h3>
+    <div class="messagearea">
+      <form action="/" method="post">
+      <textarea id="message" name="message" required>

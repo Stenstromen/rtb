@@ -5,6 +5,7 @@ const app = express();
 const rtbRouter = require("./routers/rtb.router");
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
 app.use(rtbRouter);
 

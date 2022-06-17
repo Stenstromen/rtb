@@ -71,12 +71,3 @@
     <h1>Success</h1>
     <div class="messagearea">
 <textarea id="message" readonly>
-</textarea>
-    </div>
-    <div class="messagebuttonarea">
-      <button onclick="myFunction()" id="button">
-        Copy Text To Clipboard 📋
-      </button>
-    </div>
-  </body>
-</html>
