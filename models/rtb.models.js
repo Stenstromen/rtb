@@ -1,5 +1,5 @@
 let burnMessage = [];
-const index = "./assets/store/index.txt";
+//const index = "./assets/store/index.ejs";
 const indexHeader = "./assets/store/indexheader.txt"
 const indexFooter = "./assets/store/indexfooter.txt"
 const landHeader  = "./assets/store/landheader.txt"
@@ -10,12 +10,12 @@ const noMsg = "./assets/store/nomsg.txt"
 const readme = "./assets/store/readme.txt";
 const fs = require("fs");
 
-const printIndex = fs.readFileSync(index, "utf8", (error) => {
+/*const printIndex = fs.readFileSync(index, "utf8", (error) => {
   if (error) {
     console.error(error.message);
     throw error;
   }
-});
+});*/
 
 const printIndexHeader = fs.readFileSync(indexHeader, "utf8", (error) => {
   if (error) {
@@ -76,7 +76,7 @@ const printReadme = fs.readFileSync(readme, "utf8", (error) => {
 
 module.exports = {
   burnMessage,
-  printIndex,
+  /*printIndex,*/
   printIndexHeader,
   printIndexFooter,
   printLandHeader,

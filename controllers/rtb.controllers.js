@@ -18,7 +18,7 @@ function sendMessage(req, res) {
   res.redirect("/store");
 }
 
-function sendMessageLanding(req, res) {
+async function sendMessageLanding(req, res) {
   const burnURL =
     req.protocol +
     "://" +
@@ -26,11 +26,7 @@ function sendMessageLanding(req, res) {
     req.originalUrl +
     "/" +
     tempMessageId;
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.end(model.printLandHeader 
-    + burnURL 
-    + model.printLandFooter);
-  qrcodeGen(burnURL);
+  res.render("land.ejs", {burnLink: burnURL, burnQr: await qrcodeGen(burnURL)})
 }
 
 function getMessage(req, res) {
@@ -57,8 +53,9 @@ function getMessage(req, res) {
 }
 
 function sendIndex(req, res) {
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.end(model.printIndexHeader + model.printIndexFooter);
+  //res.writeHead(200, { "Content-Type": "text/html" });
+  res.render("index.ejs");
+  //res.end(model.printIndexHeader + model.printIndexFooter);
 }
 
 function sendReadme(req, res) {
