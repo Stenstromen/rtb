@@ -18,3 +18,5 @@
 ## Run
 SECRET_KEY=`uuidgen|tr -d '-'` node app.js
 
+
+docker run -d --rm -p 80:8080 -e SECRET_KEY=`uuidgen|tr -d '-'` flowerapi
