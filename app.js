@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+
 const compression = require("compression");
 const ejs = require('ejs');
 const app = express();

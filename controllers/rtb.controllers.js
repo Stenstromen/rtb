@@ -1,4 +1,5 @@
 const { encrypt, decrypt } = require("../enc/crypto.enc");
+const { validationResult } = require("express-validator");
 const qrcodeGen = require("../qrcode/gen.qrcode");
 const model = require("../models/rtb.models");
 const uuid = require("uuid");
@@ -6,16 +7,23 @@ let tempMessageId;
 let tempMessageBody;
 
 function sendMessage(req, res) {
-  let uniqueId = uuid.v4();
-  let encryptedBody = encrypt(req.body.message);
-  model.burnMessage.push({
-    msgID: uniqueId,
-    msgBody: encryptedBody.content,
-    msgIv: encryptedBody.iv,
-  });
-  tempMessageId = uniqueId;
-  tempMessageBody = req.body.message;
-  res.redirect("/store");
+  let redir = ""
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    redir = "/";
+  } else {
+    let uniqueId = uuid.v4();
+    let encryptedBody = encrypt(req.body.message);
+    model.burnMessage.push({
+      msgID: uniqueId,
+      msgBody: encryptedBody.content,
+      msgIv: encryptedBody.iv,
+    });
+    tempMessageId = uniqueId;
+    tempMessageBody = req.body.message;
+    redir = "/store"
+  }
+  res.redirect(redir);
 }
 
 async function sendMessageLanding(req, res) {

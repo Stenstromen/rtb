@@ -9,10 +9,11 @@
 * Fix responsive design for message page
 * Fix responsive design for no message page
 * URL QR-Code generation
-
-## Todo
 * Add input validation with express-validate
 * Validate origin on POST
+
+## Todo
+* Add "Share" option for iOS (burn link)
 
 ## Run
 SECRET_KEY=`uuidgen|tr -d '-'` node app.js
