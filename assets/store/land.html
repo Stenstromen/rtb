@@ -4,24 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
-      function myFunction() {
-        const copyText = document.getElementById("url");
-
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-
-        navigator.clipboard.writeText(copyText.value);
-
-        document.getElementById("button").textContent =
-          "Copy URL To Clipboard ✅";
-
-        setTimeout(function () {
-          document.getElementById("button").textContent =
-            "Copy URL To Clipboard 📋";
-        }, 2000);
-      }
-    </script>
     <style>
       body {
         background-color: lightgray;
@@ -56,14 +38,14 @@
         }
         .qrcodearea {
           display: flex;
-    justify-content: center;
-    padding-top: 15%;
+          justify-content: center;
+          padding-top: 15%;
         }
         .messagebuttonarea {
-    display: flex;
-    justify-content: center;
-    padding-top: 90%;
-  }
+          display: flex;
+          justify-content: center;
+          padding-top: 90%;
+        }
         button {
           font-size: x-large;
           color: white;
@@ -75,158 +57,222 @@
         }
       }
       /* iPhone Landscape */
-@media screen and (min-width: 926px) {
-  .messagearea {
-    width: 910px;
-    height: 390px;
-    padding-top: 30px;
-  }
+      @media screen and (min-width: 926px) {
+        .messagearea {
+          width: 910px;
+          height: 390px;
+          padding-top: 30px;
+        }
 
-  textarea {
-    width: 880px;
-    height: 40px;
-    padding: 10px 10px;
-    font-size: 16px;
-  }
+        textarea {
+          width: 880px;
+          height: 40px;
+          padding: 10px 10px;
+          font-size: 16px;
+        }
 
-  .qrcodearea {
-    display: flex;
-    justify-content: center;
-    padding-top: 3%;
-  }
+        .qrcodearea {
+          display: flex;
+          justify-content: center;
+          padding-top: 3%;
+        }
 
-  .messagebuttonarea {
-    padding-top: 1%;
-  }
+        .messagebuttonarea {
+          padding-top: 1%;
+        }
 
-  button.submit {
-    font-size: xx-large;
-    border-radius: 25px;
-    padding: 8px 10px;
-    border: 2px solid black;
-    width: 80%;
-  }
-}
+        button.submit {
+          font-size: xx-large;
+          border-radius: 25px;
+          padding: 8px 10px;
+          border: 2px solid black;
+          width: 80%;
+        }
+      }
       /* iPad Portrait */
       @media screen and (min-width: 810px) and (max-width: 810px) {
-  .messagearea {
-    width: 790px;
-    height: 390px;
-    padding-top: 30px;
-  }
+        .messagearea {
+          width: 790px;
+          height: 390px;
+          padding-top: 30px;
+        }
 
-  textarea {
-    width: 760px;
-    height: 40px;
-    padding: 10px 10px;
-    font-size: 16px;
-  }
+        textarea {
+          width: 760px;
+          height: 40px;
+          padding: 10px 10px;
+          font-size: 16px;
+        }
 
-  .qrcodearea {
-    display: flex;
-    justify-content: center;
-    padding-top: 5%;
-  }
+        .qrcodearea {
+          display: flex;
+          justify-content: center;
+          padding-top: 5%;
+        }
 
-  .messagebuttonarea {
-    padding-top: 65%;
-  }
+        .messagebuttonarea {
+          padding-top: 65%;
+        }
 
-  button.submit {
-    font-size: xx-large;
-    border-radius: 25px;
-    padding: 8px 10px;
-    border: 2px solid black;
-    width: 80%;
-  }
-}
+        button.submit {
+          font-size: xx-large;
+          border-radius: 25px;
+          padding: 8px 10px;
+          border: 2px solid black;
+          width: 80%;
+        }
+      }
       /* iPad Landscape */
       @media screen and (min-width: 1080px) {
-  .messagearea {
-    width: 1065px;
-    height: 390px;
-    padding-top: 30px;
-  }
+        .messagearea {
+          width: 1065px;
+          height: 390px;
+          padding-top: 30px;
+        }
 
-  textarea {
-    width: 1040px;
-    height: 40px;
-    padding: 10px 10px;
-    font-size: 16px;
-  }
+        textarea {
+          width: 1040px;
+          height: 40px;
+          padding: 10px 10px;
+          font-size: 16px;
+        }
 
-  .qrcodearea {
-    display: flex;
-    justify-content: center;
-    padding-top: 3%;
-  }
+        .qrcodearea {
+          display: flex;
+          justify-content: center;
+          padding-top: 3%;
+        }
 
-  .messagebuttonarea {
-    padding-top: 25%;
-  }
+        .messagebuttonarea {
+          padding-top: 25%;
+        }
 
-  button.submit {
-    font-size: xx-large;
-    border-radius: 25px;
-    padding: 8px 10px;
-    border: 2px solid black;
-    width: 80%;
-  }
-}
-@media (min-width: 1200px) {
-  .box {
-    display: flex;
-    justify-content: center;
-    padding-top: 100px;
-  }
+        button.submit {
+          font-size: xx-large;
+          border-radius: 25px;
+          padding: 8px 10px;
+          border: 2px solid black;
+          width: 80%;
+        }
+      }
+      @media (min-width: 1200px) {
+        .box {
+          display: flex;
+          justify-content: center;
+          padding-top: 100px;
+        }
 
-  .messagearea {
-    display: grid;
-    grid-template-rows: 10% 20% 60%;
-    align-items: center;
-    padding-top: 10px;
-  }
+        .messagearea {
+          display: grid;
+          grid-template-rows: 10% 20% 60%;
+          align-items: center;
+          padding-top: 10px;
+        }
 
-  textarea {
-    width: 1040px;
-    height: 40px;
-    padding: 12px 12px;
-    font-size: 16px;
-  }
+        textarea {
+          width: 1040px;
+          height: 40px;
+          padding: 12px 12px;
+          font-size: 16px;
+        }
 
-  .messagebuttonarea {
-    display: flex;
-    justify-content: center;
-    /*padding-top: 10%;*/
-    padding-top: 15%;
-  }
+        .messagebuttonarea {
+          display: grid;
+          grid-template-rows: 50% 50%;
+          align-items: center;
+          justify-content: center;
+          padding-top: 1%;
+        }
 
-  button#button {
-    font-size: x-large;
-    border-radius: 25px;
-    /*padding: 8px 10px;*/
-    border: 2px solid black;
-    width: 900px;
-  }
-}
+        button#share {
+          font-size: x-large;
+          border-radius: 25px;
+          /*padding: 8px 10px;*/
+          border: 2px solid black;
+          width: 900px;
+        }
+
+        button#button {
+          font-size: x-large;
+          border-radius: 25px;
+          /*padding: 8px 10px;*/
+          border: 2px solid black;
+          width: 900px;
+          margin-top: 20px;
+        }
+      }
     </style>
     <title>Landing</title>
   </head>
   <body>
     <h1>Success</h1>
     <div class="box">
-    <div class="messagearea">
-      <p>Burner message available on link:</p>
-      <textarea id="url" rows="1" cols="29" readonly>https://rtb.addr.se/store/1f10dd36-3bf1-483b-86b1-ea52164ba15f</textarea>
+      <div class="messagearea">
+        <p>Burner message available on link:</p>
+        <textarea id="url" rows="1" cols="29" readonly>
+          <%= burnLink %></textarea
+        >
         <div class="qrcodearea">
-    <img src="data:image/png;base64,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" />
-    </div>
-    </div>
+          <img
+            src="<%= burnQr %>"
+          />
+        </div>
+      </div>
     </div>
     <div class="messagebuttonarea">
-      <button onclick="myFunction()" id="button">
+      <button onclick="myFunction('share')" id="share">
+        Share URL (iOS) 📲
+      </button>
+      <button onclick="myFunction('clip')" id="button">
         Copy URL To Clipboard 📋
       </button>
     </div>
+    <script>
+      const shareData = {
+        title: "Burn Link",
+        text: "Burner Link",
+        url: "<%= burnLink %>",
+      };
+
+      const btn = document.getElementById("share");
+      const resultPara = document.getElementById("url");
+
+      // Share must be triggered by "user activation"
+      btn.addEventListener("click", async () => {
+        try {
+          await navigator.share(shareData);
+          resultPara.textContent = "MDN shared successfully";
+          console.log("here");
+        } catch (err) {
+          resultPara.textContent = "Error: " + err;
+        }
+      });
+      function myFunction(link) {
+        if (link === "clip") {
+          const copyText = document.getElementById("url");
+
+          copyText.select();
+          copyText.setSelectionRange(0, 99999);
+
+          navigator.clipboard.writeText(copyText.value);
+
+          document.getElementById("button").textContent =
+            "Copy URL To Clipboard ✅";
+
+          setTimeout(function () {
+            document.getElementById("button").textContent =
+              "Copy URL To Clipboard 📋";
+          }, 2000);
+        } else if (link === "share") {
+          document.getElementById("share").textContent = "Share URL (iOS) ✅";
+
+          setTimeout(function () {
+            document.getElementById("share").textContent = "Share URL (iOS) 📲";
+          }, 1000);
+
+          console.log("Share triggered");
+        }
+      }
+    </script>
   </body>
 </html>
