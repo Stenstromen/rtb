@@ -26,11 +26,13 @@ async function sendMessageLanding(req, res) {
     req.originalUrl +
     "/" +
     tempMessageId;
-  res.render("land.ejs", {burnLink: burnURL, burnQr: await qrcodeGen(burnURL)})
+  res.render("land.ejs", {
+    burnLink: burnURL,
+    burnQr: await qrcodeGen(burnURL),
+  });
 }
 
 function getMessage(req, res) {
-  let responseMsg;
   const foundMessage = model.burnMessage.find(
     (msg) => msg.msgID === req.params.id
   );
@@ -41,26 +43,16 @@ function getMessage(req, res) {
       iv: foundMessage.msgIv,
       content: foundMessage.msgBody,
     });
-    responseMsg =
-      model.printMsgHeader + decrypt(foundEncMessage[0]) + model.printMsgFooter;
+    res.render("msg.ejs", { burnMsg: decrypt(foundEncMessage[0]) });
     foundMessage.msgID = "";
     foundMessage.msgBody = "";
   } else {
-    responseMsg = model.printNoMsg;
+    res.render("nomsg.ejs");
   }
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.end(responseMsg);
 }
 
 function sendIndex(req, res) {
-  //res.writeHead(200, { "Content-Type": "text/html" });
   res.render("index.ejs");
-  //res.end(model.printIndexHeader + model.printIndexFooter);
-}
-
-function sendReadme(req, res) {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end(model.printReadme);
 }
 
 module.exports = {
@@ -68,5 +60,4 @@ module.exports = {
   sendMessageLanding,
   getMessage,
   sendIndex,
-  sendReadme,
 };

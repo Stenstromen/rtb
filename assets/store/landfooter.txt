@@ -1,9 +1,0 @@
-</textarea>
-    </div>
-    <div class="messagebuttonarea">
-      <button onclick="myFunction()" id="button">
-        Copy URL To Clipboard 📋
-      </button>
-    </div>
-  </body>
-</html>
