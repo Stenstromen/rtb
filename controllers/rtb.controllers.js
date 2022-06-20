@@ -7,7 +7,7 @@ let tempMessageId;
 let tempMessageBody;
 
 function sendMessage(req, res) {
-  let redir = ""
+  let redir = "";
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     redir = "/";
@@ -21,7 +21,7 @@ function sendMessage(req, res) {
     });
     tempMessageId = uniqueId;
     tempMessageBody = req.body.message;
-    redir = "/store"
+    redir = "/store";
   }
   res.redirect(redir);
 }
@@ -45,7 +45,13 @@ function getMessage(req, res) {
     (msg) => msg.msgID === req.params.id
   );
 
-  if (foundMessage?.msgID) {
+  const iosPreview = req
+    .get("User-Agent")
+    .includes("facebookexternalhit/1.1 Facebot Twitterbot/1.0");
+
+  if (iosPreview) {
+    res.render("iospreview.ejs");
+  } else if (foundMessage?.msgID) {
     let foundEncMessage = [];
     foundEncMessage.push({
       iv: foundMessage.msgIv,
