@@ -28,8 +28,7 @@ function sendMessage(req, res) {
 
 async function sendMessageLanding(req, res) {
   const burnURL =
-    req.protocol +
-    "://" +
+    "https://" +
     req.get("host") +
     req.originalUrl +
     "/" +
