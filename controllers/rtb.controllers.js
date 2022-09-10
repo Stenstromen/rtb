@@ -14,11 +14,12 @@ function sendMessage(req, res) {
   } else {
     let uniqueId = uuid.v4();
     let encryptedBody = encrypt(req.body.message);
-    model.burnMessage.push({
+    /*model.burnMessage.push({
       msgID: uniqueId,
       msgBody: encryptedBody.content,
       msgIv: encryptedBody.iv,
-    });
+    });*/
+    model.createMessage(uniqueId, encryptedBody.content, encryptedBody.iv)
     tempMessageId = uniqueId;
     tempMessageBody = req.body.message;
     redir = "/store";
