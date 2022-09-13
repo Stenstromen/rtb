@@ -41,9 +41,10 @@ async function sendMessageLanding(req, res) {
 }
 
 function getMessage(req, res) {
-  const foundMessage = model.burnMessage.find(
+  model.readAndBurnMessage(req.params.id)
+  /*const foundMessage = model.burnMessage.find(
     (msg) => msg.msgID === req.params.id
-  );
+  );*/
 
   const iosPreview = req
     .get("User-Agent")
@@ -52,14 +53,15 @@ function getMessage(req, res) {
   if (iosPreview) {
     res.render("iospreview.ejs");
   } else if (foundMessage?.msgID) {
-    let foundEncMessage = [];
+    /*let foundEncMessage = [];
     foundEncMessage.push({
       iv: foundMessage.msgIv,
       content: foundMessage.msgBody,
-    });
+    });*/
+    model.readAndBurnMessage(req.params.id)
     res.render("msg.ejs", { burnMsg: decrypt(foundEncMessage[0]) });
-    foundMessage.msgID = "";
-    foundMessage.msgBody = "";
+    //foundMessage.msgID = "";
+    //foundMessage.msgBody = "";
   } else {
     res.render("nomsg.ejs");
   }
