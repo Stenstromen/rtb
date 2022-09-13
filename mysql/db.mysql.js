@@ -19,7 +19,6 @@ con.connect(function (err) {
     "CREATE TABLE burntable (id INT AUTO_INCREMENT PRIMARY KEY, messageId VARCHAR(255), messageEnc VARCHAR(255), messageIv VARCHAR(255))";
   con.query(sql, function (err, result) {
     if (err) {
-        console.log(err)
         console.log("Table 'burntable' already exists")
         return;
     }

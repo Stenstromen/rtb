@@ -3,6 +3,7 @@ const { validationResult } = require("express-validator");
 const qrcodeGen = require("../qrcode/gen.qrcode");
 const model = require("../models/rtb.models");
 const uuid = require("uuid");
+const con = require("../mysql/db.mysql");
 let tempMessageId;
 let tempMessageBody;
 
@@ -14,12 +15,7 @@ function sendMessage(req, res) {
   } else {
     let uniqueId = uuid.v4();
     let encryptedBody = encrypt(req.body.message);
-    /*model.burnMessage.push({
-      msgID: uniqueId,
-      msgBody: encryptedBody.content,
-      msgIv: encryptedBody.iv,
-    });*/
-    model.createMessage(uniqueId, encryptedBody.content, encryptedBody.iv)
+    model.createMessage(uniqueId, encryptedBody.content, encryptedBody.iv);
     tempMessageId = uniqueId;
     tempMessageBody = req.body.message;
     redir = "/store";
@@ -29,11 +25,7 @@ function sendMessage(req, res) {
 
 async function sendMessageLanding(req, res) {
   const burnURL =
-    "https://" +
-    req.get("host") +
-    req.originalUrl +
-    "/" +
-    tempMessageId;
+    "https://" + req.get("host") + req.originalUrl + "/" + tempMessageId;
   res.render("land.ejs", {
     burnLink: burnURL,
     burnQr: await qrcodeGen(burnURL),
@@ -41,29 +33,31 @@ async function sendMessageLanding(req, res) {
 }
 
 function getMessage(req, res) {
-  model.readAndBurnMessage(req.params.id)
-  /*const foundMessage = model.burnMessage.find(
-    (msg) => msg.msgID === req.params.id
-  );*/
-
   const iosPreview = req
     .get("User-Agent")
     .includes("facebookexternalhit/1.1 Facebot Twitterbot/1.0");
 
   if (iosPreview) {
     res.render("iospreview.ejs");
-  } else if (foundMessage?.msgID) {
-    /*let foundEncMessage = [];
-    foundEncMessage.push({
-      iv: foundMessage.msgIv,
-      content: foundMessage.msgBody,
-    });*/
-    model.readAndBurnMessage(req.params.id)
-    res.render("msg.ejs", { burnMsg: decrypt(foundEncMessage[0]) });
-    //foundMessage.msgID = "";
-    //foundMessage.msgBody = "";
   } else {
-    res.render("nomsg.ejs");
+    let foundEncMessage = [];
+
+    let sql = `SELECT messageEnc, messageIv FROM burntable WHERE messageId = "${req.params.id}";`;
+    con.query(sql, function (err, result, fields) {
+      if (err) throw err;
+      if (result.length === 0) {
+        res.render("nomsg.ejs");
+      }
+      Object.keys(result).forEach(function (key) {
+        let row = result[key];
+        foundEncMessage.push({
+          iv: row.messageIv,
+          content: row.messageEnc,
+        });
+        res.render("msg.ejs", { burnMsg: decrypt(foundEncMessage[0]) });
+        model.burnMessage(req.params.id);
+      });
+    });
   }
 }
 
